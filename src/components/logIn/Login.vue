@@ -6,8 +6,8 @@
                 <input type="text" class="form-control" id="username" aria-describedby="emailHelp" v-model="formData.username">
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Password:</label>
-                <input type="password" class="form-control" id="password" v-model="formData.password">
+                <label for="current-password" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="current-password" v-model="formData.password">
             </div>
             <button type="submit" class="btn btn-primary">Log In</button>
         </div>
