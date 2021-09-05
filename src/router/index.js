@@ -4,7 +4,7 @@ import Artikli from '../components/artikli/Artikli.vue'
 import LogOut from '../components/logOut/LogOut.vue'
 import KupacRegister from '../components/register/KupacRegister.vue'
 import ProdavacRegister from '../components/register/ProdavacRegister.vue'
-
+import DodavanjeArtikla from '../components/artikli/DodavanjeArtikla.vue'
 const router = new createRouter({
     history: createWebHistory(),
     routes:[
@@ -33,6 +33,12 @@ const router = new createRouter({
             path:'/prodavac-register',
             component:ProdavacRegister
         },
+        {
+            name:'DodavanjeArtikla',
+            path:'/dodavanje-artikla',
+            component:DodavanjeArtikla
+        },
+        
     ]
 })
 router.beforeEach((to,from, next) => {

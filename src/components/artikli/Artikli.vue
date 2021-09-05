@@ -1,11 +1,13 @@
 <template>
     <div>
         <h3 v-if="greska">{{greska}}</h3>
-            <div style="background:red; margin:2% 0 2% 0; padding: 2% width:33% display:grid" v-for="a in artikli" :key="a.id">
+            <div id="divartikli" v-for="a in artikli" :key="a.id">
             <div>
                 <h5>{{a.naziv}} {{a.cena}}</h5>
                 <h5>{{a.opis}}</h5>
             </div>
+            <button>izmjeni</button>
+            <button>obrisi</button>
         </div>
     </div>
 </template>
@@ -44,5 +46,10 @@ export default {
 </script>
 
 <style scoped>
-
+    #divartikli{
+        background: yellow;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        width: 550px;
+        text-align: center;
+    }
 </style>

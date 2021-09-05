@@ -1,10 +1,8 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Web prodavnica</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a id="webprodavinca" class="navbar-brand" href="#">Web prodavnica</a>
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li v-if="!tokenn" class="navbar-nav">
@@ -21,6 +19,9 @@
         </li>
         <li v-if="!tokenn" class="navbar-nav">
             <a href="/prodavac-register" class="nav-link">Register Prodavac</a>
+        </li>
+        <li v-if="tokenn" class="navbar-nav">
+            <a href="/dodavanje-artikla" class="nav-link">Dodavanje Artikla</a>
         </li>
       </ul>
     </div>
@@ -44,3 +45,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+ #webprodavinca{
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   background: chocolate;
+ }
+</style>
