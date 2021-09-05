@@ -19,6 +19,9 @@
         <li v-if="!tokenn" class="navbar-nav">
             <a href="/kupac-register" class="nav-link">Register Kupac</a>
         </li>
+        <li v-if="!tokenn" class="navbar-nav">
+            <a href="/prodavac-register" class="nav-link">Register Prodavac</a>
+        </li>
       </ul>
     </div>
   </div>
