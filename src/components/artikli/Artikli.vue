@@ -6,8 +6,8 @@
                 <h5>{{a.naziv}} {{a.cena}}</h5>
                 <h5>{{a.opis}}</h5>
             </div>
-            <button>izmjeni</button>
-            <button>obrisi</button>
+            <button @click='getOneArtikal(a.id)'>izmjeni</button>
+            <button @click='brisanjeArtikla(a.id)'>obrisi</button>
         </div>
     </div>
 </template>
@@ -24,7 +24,8 @@ export default {
     data() {
         return{
             artikli:[],
-            greska: ''
+            greska: '',
+            artikal:null
         }
     },
     methods:{
@@ -39,10 +40,38 @@ export default {
                     console.log(error)
                     this.greska = 'Error retriving data'
                 })
-            }
+            },
+            brisanjeArtikla(id){
+            axios
+            .delete('api/artikal/' + id)
+            .then((response) =>{
+                this.brisanjeArtikla = response.data
+                this.getArtikli()
+                
+            })
+            .catch((error) => {
+                 console.log(error)
+                alert('Data is not valid!')
+            })
+        },
+        getOneArtikal(id) {
+            axios
+            .get('api/artikal/' + id)
+                .then((response) => {
+                    this.artikal = response.data
+                    console.log(this.artikal + ' artikli')
+                    this.$router.push('/get-one-artikal/'+id)
+                })
+                .catch((error) => {
+                    console.log(error)
+                    this.greska = 'Error retriving data'
+                })
+            },
+            
+        }
+
     }
 
-}
 </script>
 
 <style scoped>

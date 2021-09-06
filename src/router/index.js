@@ -5,6 +5,8 @@ import LogOut from '../components/logOut/LogOut.vue'
 import KupacRegister from '../components/register/KupacRegister.vue'
 import ProdavacRegister from '../components/register/ProdavacRegister.vue'
 import DodavanjeArtikla from '../components/artikli/DodavanjeArtikla.vue'
+import BrisanjeArtikla from '../components/artikli/BrisanjeArtikla.vue'
+import IzmenaArtikla from '../components/artikli/IzmenaArtikla.vue'
 const router = new createRouter({
     history: createWebHistory(),
     routes:[
@@ -37,6 +39,16 @@ const router = new createRouter({
             name:'DodavanjeArtikla',
             path:'/dodavanje-artikla',
             component:DodavanjeArtikla
+        },
+        {
+            name:'BrisanjeArtikla',
+            path:'/brisanje-artikla',
+            component:BrisanjeArtikla
+        },
+        {
+            name:'IzmenaArtikla',
+            path:'/get-one-artikal/:id',
+            component:IzmenaArtikla
         },
         
     ]

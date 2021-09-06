@@ -1,29 +1,32 @@
 <template>
-    <form @submit.prevent="dodavanjeArtikla">
+
+    <form @submit.prevent="izmenaArtikla">
 
     <div class="mb-3">
-        <label for="naziv" class="form-label">Naziv:</label>
-        <input type="text" class="form-control" id="naziv" v-model="formData.naziv">
+        <label class="form-label" for="naziv">Naziv:</label>
+        <input type="text" class="form-control" id="naziv" v-model="artikal.naziv">
     </div>
     <div class="mb-3">
-        <label for="opis" class="form-label">Opis:</label>
-        <input type="text" class="form-control" id="opis" v-model="formData.opis">
+        <label class="form-label" for="opis">Opis:</label>
+        <input type="text" class="form-control" id="opis" v-model="artikal.opis">
+
     </div>
     <div class="mb-3">
-        <label for="cena" class="form-label">Cena:</label>
-        <input type="text" class="form-control" id="cena" v-model="formData.cena">
+        <label class="form-label" for="cena">Cena:</label>
+        <input type="text" class="form-control" id="cena" v-model="artikal.cena">
     </div>
-    <div class="mb-3">
-        <label for="putanjaSlike" class="form-label">Putanja Slike:</label>
-        <input type="text" class="form-control" id="putanjaSlike" v-model="formData.putanjaSlike">
+    <div class="input-group mb-3">
+        <label class="form-label" for="putanjaSlike">Putanja slike:</label>
+        <input type="text" class="form-control" id="cena" v-model="artikal.putanjaSlike">
     </div>
     <label for="prodavac" class="form-label">Prodavac:</label>
-    <select class="form-control" @change="changeProdavac($event)" v-model="formData.prodavacDTO">
+    <select class="form-control" @change="changeProdavac($event) " v-model="artikal.ProdavacDTO" > 
         <option value="" selected disabled>Choose</option>
         <option v-for="p in prodavci" :value="p.id" :key="p.id">{{ p.korisnickoIme }}</option>
     </select>
-    <button type="submit" class="btn btn-primary">Register</button>
+    <button @click="izmenaArtikla(artikal.id)" type="submit" class="btn btn-primary">Izmeni</button>
     </form>
+
 
 </template>
 
@@ -31,14 +34,16 @@
 import axios from '../../axiosConfig'
 
 export default {
-    name:'DodavanjeArtikla',
+    name:'IzmenaArtikla',
     created(){
         let token = localStorage.getItem('token');
         axios.defaults.headers['Authorization'] = `${token}`
+        this.getOneArtikal(this.$route.params.id)
         this.sviProdavci()
     },
     data() {
         return {
+            artikal:null,
             formData: {
                 naziv: '',
                 opis: '',
@@ -66,6 +71,18 @@ export default {
                 alert('Niste pravilno uneli podatke!')
             })
         },
+        izmenaArtikla(id) {
+            axios
+            .put('api/artikal/' + id , this.artikal)
+            .then((response) => {
+                console.log(response.data + 'data artikal')
+                this.$router.push({ path: '/artikal'})
+            })
+            .catch((error) => {
+                console.log(error)
+               // alert('Niste pravilno  podatke')
+            })
+        },
         sviProdavci(){
             axios
             .get('api/prodavac')
@@ -77,6 +94,18 @@ export default {
                 alert('Data is not valid!')
             })
         },
+        getOneArtikal(id) {
+            axios
+            .get('api/artikal/' + id)
+                .then((response) => {
+                    this.artikal = response.data
+                    console.log(this.artikal + ' artikli')
+                })
+                .catch((error) => {
+                    console.log(error)
+                    this.greska = 'Error retriving data'
+                })
+            },
         changeProdavac (event) {
             this.user.prodavac = event.target.value
             this.selectedProdavac= event.target.options[event.target.options.selectedIndex].text
@@ -85,8 +114,9 @@ export default {
 
 
 }
+    
 </script>
 
-<style scoped>
+<style>
 
 </style>
