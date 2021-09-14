@@ -7,6 +7,9 @@ import ProdavacRegister from '../components/register/ProdavacRegister.vue'
 import DodavanjeArtikla from '../components/artikli/DodavanjeArtikla.vue'
 import BrisanjeArtikla from '../components/artikli/BrisanjeArtikla.vue'
 import IzmenaArtikla from '../components/artikli/IzmenaArtikla.vue'
+// import IzaberiProdavca from '../components/porudzbina/IzaberiProdavca.vue'
+import Aaaa from '../components/porudzbina/Aaaa.vue'
+import ArtikliProdavca from '../components/porudzbina/ArtikliProdavca.vue'
 const router = new createRouter({
     history: createWebHistory(),
     routes:[
@@ -50,7 +53,16 @@ const router = new createRouter({
             path:'/get-one-artikal/:id',
             component:IzmenaArtikla
         },
-        
+        {
+            name:'Aaaa',
+            path:'/izaberi-prodavca',
+            component:Aaaa
+        },
+        {
+            name:'ArtikliProdavca',
+            path:'/artikli-prodavca/:id',
+            component:ArtikliProdavca
+        },
     ]
 })
 router.beforeEach((to,from, next) => {

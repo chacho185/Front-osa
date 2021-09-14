@@ -23,8 +23,9 @@
         <li v-if="tokenn" class="navbar-nav">
             <a href="/dodavanje-artikla" class="nav-link">Dodavanje Artikla</a>
         </li>
-        
-        
+        <li v-if="tokenn" class="navbar-nav">
+            <a href="/izaberi-prodavca" class="nav-link">Napravi porudzbinu</a>
+        </li>
       </ul>
     </div>
   </div>
