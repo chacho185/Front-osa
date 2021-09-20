@@ -1,13 +1,13 @@
 <template>
     <div>
         <h3 v-if="greska">{{greska}}</h3>
-            <div id="divartikli" v-for="a in artikli" :key="a.id">
+            <div class="form-control" id="divartikli" v-for="a in artikli" :key="a.id">
             <div>
                 <h5>{{a.naziv}} {{a.cena}}</h5>
                 <h5>{{a.opis}}</h5>
             </div>
-            <button @click='getOneArtikal(a.id)'>izmjeni</button>
-            <button @click='brisanjeArtikla(a.id)'>obrisi</button>
+            <button class="btn btn-success" @click='getOneArtikal(a.id)'>izmjeni</button>
+            <button class="btn btn-danger" @click='brisanjeArtikla(a.id)'>obrisi</button>
         </div>
     </div>
 </template>

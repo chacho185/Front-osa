@@ -61,7 +61,7 @@ export default {
                 console.log(error)
                 this.greska = 'Error retriving data'
             })
-        }
+        },
     }
 }
 </script>

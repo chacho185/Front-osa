@@ -10,6 +10,7 @@ import IzmenaArtikla from '../components/artikli/IzmenaArtikla.vue'
 // import IzaberiProdavca from '../components/porudzbina/IzaberiProdavca.vue'
 import Aaaa from '../components/porudzbina/Aaaa.vue'
 import ArtikliProdavca from '../components/porudzbina/ArtikliProdavca.vue'
+import NapraviPorudzbinu from '../components/porudzbina/NapraviPorudzbinu.vue'
 const router = new createRouter({
     history: createWebHistory(),
     routes:[
@@ -62,6 +63,11 @@ const router = new createRouter({
             name:'ArtikliProdavca',
             path:'/artikli-prodavca/:id',
             component:ArtikliProdavca
+        },
+        {
+            name:'NapraviPorudzbinu',
+            path:'/napravi-porudzbinu',
+            component:NapraviPorudzbinu
         },
     ]
 })
