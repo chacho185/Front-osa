@@ -1,12 +1,7 @@
 <template>
     <div>
         <h3 v-if="greska">{{greska}}</h3>
-            <div id="divartikli" v-for="a in artikli" :key="a.id">
-                <h4>OVO JE ARTIKAL PRODAVCA {{a.prodavacDTO}}</h4>
-            <div>
-                <h5>{{a.naziv}} {{a.cena}}</h5>
-                <h5>{{a.opis}}</h5>
-            </div>
+            
             
             <label for="prodavac" class="form-label">Porudzbina:</label>
             <select class="form-control" @change="changePorudzbina($event) " v-model="formData.porudzbinaDTO" > 
@@ -14,13 +9,14 @@
                 <option v-for="p in porudzbine" :value="p.id" :key="p.id">{{ p.id }}</option>
             </select>
 
-            <div class="mb-3">
-                <label for="kupujem" class="form-label">Artikal id:</label>
-                <input type="number" class="form-control" id="kupujem" v-model="formData.artikalDTO">
-            </div>
+            <label for="prodavac" class="form-label">Atrikal:</label>
+            <select class="form-control" @change="changeArtikal($event) " v-model="formData.artikalDTO" > 
+                <option value="" selected disabled>Choose</option>
+                <option v-for="a in artikli" :value="a.id" :key="a.id">{{ a.naziv }}</option>
+            </select>
 
             <div class="mb-3">
-                <label for="kupujem" class="form-label">Kupujem:</label>
+                <label for="kupujem" class="form-label">Kupujem:(samo oznaciti red)</label>
                 <input @change="dodajStavku()" type="checkbox" class="form-control" id="kupujem"><!--  v-model="formData.putanjaSlike"-->
             </div>
             <div class="mb-3">
@@ -30,11 +26,7 @@
             <p>------------------------------------------------------------------------------</p>
             <!--  treba napraviti metodu koju ce poyivati on click -->
         </div>
-        
-            <button @click="zavrsiPorudzbinu()">Zavrsi porudzbinu</button>
-        <!-- <button @click="ukupnacijena(a.cena)">sracunaj</button>
-            <input type="text" v-model="this.ukupnaCijena"> -->
-    </div>
+        <button @click="zavrsiPorudzbinu()">Zavrsi porudzbinu</button>
 </template>
 
 <script>
@@ -46,6 +38,7 @@ export default{
         axios.defaults.headers['Authorization'] = `${token}`
         this.getArtikliForProdavac(this.$route.params.id)
         this.prikaziPorudzbine()
+        
     },
     data(){
         return{
@@ -53,12 +46,13 @@ export default{
             artikli:[],
             izabraniArtiklii:[],
             selPorudzbina:null,
+            selArtikal:null,
             porudzbine:[],
             formData:{
                 id:0,
                 kolicina:0,
                 porudzbinaDTO:0,
-                artikalDTO:10
+                artikalDTO:0
             },
             stavke:[]
         }
@@ -80,6 +74,11 @@ export default{
         changePorudzbina(event) {
             this.selPorudzbina = event.target.value
             this.selPorudzbina= event.target.options[event.target.options.selectedIndex].text
+            localStorage.setItem('porudzbinaId', this.selPorudzbina)
+        },
+        changeArtikal(event) {
+            this.selArtikal = event.target.value
+            this.selArtikal= event.target.options[event.target.options.selectedIndex].text
         },
         prikaziStavke(){
             axios
@@ -123,7 +122,7 @@ export default{
             })
         },
         zavrsiPorudzbinu(){
-            this.$router.push({ path: '/artikal'})
+           this.$router.push({ path: '/stavke'})
         }
     }
 }

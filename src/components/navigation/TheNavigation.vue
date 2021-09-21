@@ -1,12 +1,13 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a id="webprodavinca" class="navbar-brand" href="#">Web prodavnica</a>
+    <!-- <a class="navbar-brand" href="#"></a> -->
+    <a id="webprodavinca" class="navbar-brand" href="#">Web prodavnica:MikroMarket</a>
     
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar navbar-expand-lg navbar-light bg-light" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li v-if="!tokenn" class="navbar-nav">
-            <a href="/login" class="nav-link">Log In</a>
+            <a href="/login" class="nav-link"> Log In</a>
         </li>
         <li v-if="tokenn" class="navbar-nav">
             <a href="/artikal" class="nav-link">Artikli</a>
@@ -54,4 +55,9 @@ export default {
    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
    background: chocolate;
  }
+ #navbarSupportedContent{
+   display: inline-block;
+ }
+
+ 
 </style>

@@ -40,7 +40,7 @@ export default {
                 komentar: '',
                 anonimiKomentar: false,
                 arhiviraniKomentar: false,
-                kupacDTO: 2
+                kupacDTO: 0
             }
         }
     },

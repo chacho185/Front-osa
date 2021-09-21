@@ -11,6 +11,7 @@ import IzmenaArtikla from '../components/artikli/IzmenaArtikla.vue'
 import Aaaa from '../components/porudzbina/Aaaa.vue'
 import ArtikliProdavca from '../components/porudzbina/ArtikliProdavca.vue'
 import NapraviPorudzbinu from '../components/porudzbina/NapraviPorudzbinu.vue'
+import PrikaziStavke from '../components/porudzbina/PrikaziStavke.vue'
 const router = new createRouter({
     history: createWebHistory(),
     routes:[
@@ -68,6 +69,11 @@ const router = new createRouter({
             name:'NapraviPorudzbinu',
             path:'/napravi-porudzbinu',
             component:NapraviPorudzbinu
+        },
+        {
+            name:'PrikaziStavke',
+            path:'/stavke',
+            component:PrikaziStavke
         },
     ]
 })

@@ -10,7 +10,7 @@
                 <input type="text" class="form-control" id="email" v-model="formData.email">
             </div>
             <div class="mb-3">
-                <label for="naziv" class="form-label">Nazvi:</label>
+                <label for="naziv" class="form-label">Naziv:</label>
                 <input type="text" class="form-control" id="naziv" v-model="formData.naziv">
             </div>
             <div class="mb-3" >
